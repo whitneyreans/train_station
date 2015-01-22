@@ -1,0 +1,22 @@
+<h1>Train Stations and Stops</h1>
+
+<p>Add a new station:</p>
+
+<form action="/stations" method="post">
+  <label for="name">Name of station:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add list</button>
+</form>
+
+<% if @stations.any?() %>
+<p>Click on a station to see its lines:</p>
+
+<ul>
+  <% @stations.each do |station| %>
+  <li><a href="/stations/<%= station.id() %>"><%= station.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no lines stopping at this station!</p>
+<% end %>
